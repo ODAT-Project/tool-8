@@ -318,11 +318,9 @@ class CSVCleanerApp:
             path_var.set(directory)
 
     def _log_message(self, message):
-        """ Safely logs a message to the status area from any thread. """
         self.master.after(0, self._update_gui_log, message)
 
     def _update_gui_log(self, message):
-        """ This method is run by self.master.after, so it's in the main thread. """
         self.status_area.config(state=tk.NORMAL)
         self.status_area.insert(tk.END, str(message) + "\n")
         self.status_area.see(tk.END) #scroll to the end
